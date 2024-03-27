@@ -60,7 +60,7 @@ public class LoginController {
                            @Valid @ModelAttribute("user") UserRequest userRequest,
                            BindingResult result) {
         if (result.hasErrors()) {
-            model.addAttribute("customer", new User());
+            model.addAttribute("user", new User());
             return "login/login";
         }else {
             User customer = userService.cretaeUser(userRequest);
@@ -70,7 +70,7 @@ public class LoginController {
 
     @GetMapping("/logout")
     public String logout() {
-        session.removeAttribute("customer");
+        session.removeAttribute("user");
         return "redirect:/home";
     }
 }
