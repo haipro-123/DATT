@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class PostController {
     private final UserService userService;
-//    private final PostService postService;
+    private final PostService postService;
     private final HttpSession session;
 
     @GetMapping("/post")
