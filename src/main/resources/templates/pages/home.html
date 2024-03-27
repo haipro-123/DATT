@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout page</title>
+    <script src="common-script.js"></script>
+</head>
+<body>
+<header>
+    <h1>My website</h1>
+</header>
+<body>
+   <div th:each="post:${listPost}">
+       <h3 th:text="${post.title}"></h3>
+       <span th:text="${post.actor}"></span>
+       <p th:text="${post.content}"></p>
+       <button th:type="submit">Like</button>
+   </div>
+   <div th:if="${listPost.totalPages>0}" class="pagination" th:each="pageNumber:${pageNumber}">
+       <a th:href="@{/view/{page}(page=${pageNumber})}" th:text="${pageNumber}" th:class="${pageNumber==listPost.number+1}?active">
+       </a>
+   </div>
+</body>
+</body>
+</html>
