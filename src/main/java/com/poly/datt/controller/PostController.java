@@ -4,6 +4,7 @@ import com.poly.datt.service.PostService;
 import com.poly.datt.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class PostController {
     private final UserService userService;
-    private final PostService postService;
+    @Autowired
+    private PostService postService;
     private final HttpSession session;
 
     @GetMapping("/post")

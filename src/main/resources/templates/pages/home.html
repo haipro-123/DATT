@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div th:each="post:${listPost}">
+        <h3 th:text="${post.title}"></h3>
+        <span th:text="${post.actor}"></span>
+        <p th:text="${post.content}"></p>
+        <button type="button">Like</button>
+    </div>
+    <div th:if="${listPost.totalPages > 0}" class="pagination"
+         th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/listPost(size=${listPost.size}, page=${pageNumber})}"
+           th:text=${pageNumber}
+           th:class="${pageNumber==listPost.number + 1} ? active"></a>
+    </div>
+</body>
+</html>
