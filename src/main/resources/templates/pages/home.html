@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <h1 style="text-align: center">My Social</h1>
     <div th:each="post:${listPost}">
         <h3 th:text="${post.title}"></h3>
         <span th:text="${post.actor}"></span>

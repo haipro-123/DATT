@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
 public class MainController {
     @Autowired
     private PostService postService;
-    @GetMapping("view")
+    @GetMapping("home")
     public String view(Model model, @RequestParam("page") Optional<Integer> page){
         int currentPage = page.orElse(1);
         Page<Post> listPost = postService.findPaginated(PageRequest.of(currentPage-1,5));
