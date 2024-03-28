@@ -4,9 +4,11 @@ import com.poly.datt.dto.UserDTO;
 import com.poly.datt.dto.UserRequest;
 import com.poly.datt.entity.User;
 import com.poly.datt.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,11 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
     private final UserService userService;
-    private final HttpSession session;
+//    private final HttpSession session ;
 
     @GetMapping("/loginPage")
     public String loginPage() {
@@ -28,7 +31,7 @@ public class LoginController {
     @PostMapping("/login")
     public String login(@Valid @ModelAttribute UserDTO userDTO,
                         BindingResult result,
-                        Model model) {
+                        Model model, HttpServletRequest request) {
         if (result.hasErrors()) {
             model.addAttribute("error", "Vui lòng nhập đầy đủ thông tin");
             return "client/login/login";
@@ -41,7 +44,7 @@ public class LoginController {
             return "login/login";
         }
         if (user != null) {
-            session.setAttribute("user", user);
+            request.getSession().setAttribute("user", user);
             return "redirect:/home";
         } else {
             model.addAttribute("error", "Sai tài khoản hoặc mật khẩu");
@@ -69,7 +72,7 @@ public class LoginController {
     }
 
     @GetMapping("/logout")
-    public String logout() {
+    public String logout(HttpSession session) {
         session.removeAttribute("customer");
         return "redirect:/home";
     }
