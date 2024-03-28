@@ -54,6 +54,7 @@ public class LoginController {
             User user = userService.loginUser(userDTO);
             if (user != null) {
                 response.put("success", "/home");
+                response.put("user", String.valueOf(user));
                 return ResponseEntity.ok().body(response);
             } else {
                 response.put("error", "Sai tài khoản hoặc mật khẩu");
