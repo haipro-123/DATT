@@ -18,3 +18,30 @@ inputs.forEach(input => {
 	input.addEventListener("focus", addcl);
 	input.addEventListener("blur", remcl);
 });
+$(document).ready(function(){
+	$(".btnLike").each(function (i,btn){
+		btn.addEventListener("click",function (e){
+			e.preventDefault();
+			let idPost = btn.getAttribute("id");
+			let idUser = localStorage.getItem("user");
+			$.ajax({
+				type:"POST",
+				url:"/like",
+				processData: false,
+				data:JSON.stringify({
+					idPost : idPost,
+					idUser : idUser
+				}),
+				contentType: "application/json",
+				dataType: "json",
+				success:function (data){
+
+				},
+				error:function (e){
+					console.log(e);
+				}
+			})
+		})
+
+	});
+});
