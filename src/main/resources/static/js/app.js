@@ -23,7 +23,7 @@ $(document).ready(function(){
 		btn.addEventListener("click",function (e){
 			e.preventDefault();
 			let idPost = btn.getAttribute("id");
-			let idUser = localStorage.getItem("user");
+			let idUser = localStorage.getItem("idUser");
 			$.ajax({
 				type:"POST",
 				url:"/like",
@@ -35,7 +35,21 @@ $(document).ready(function(){
 				contentType: "application/json",
 				dataType: "json",
 				success:function (data){
-
+					if(data){
+						Swal.fire({
+							position: "top-end",
+							icon: "success",
+							title: "Like thành công",
+							showConfirmButton: false,
+							timer: 1500
+						});
+					}else {
+						Swal.fire({
+							icon: "error",
+							title: "Oops...",
+							text: "Bạn đã like rồi!",
+						});
+					}
 				},
 				error:function (e){
 					console.log(e);

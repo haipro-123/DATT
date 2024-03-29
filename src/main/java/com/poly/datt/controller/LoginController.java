@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,8 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
     private final HttpSession session;
 
     @GetMapping("/loginPage")
@@ -54,7 +56,7 @@ public class LoginController {
             User user = userService.loginUser(userDTO);
             if (user != null) {
                 response.put("success", "/home");
-                response.put("user", user.get);
+                response.put("user", user.getId().toString());
                 return ResponseEntity.ok().body(response);
             } else {
                 response.put("error", "Sai tài khoản hoặc mật khẩu");
