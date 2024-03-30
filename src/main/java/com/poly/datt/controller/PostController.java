@@ -54,6 +54,6 @@ public class PostController {
     @PostMapping("/save")
     public String savePost(@RequestBody Post post) {
         postService.savePost(post);
-        return "Bài đăng đã được lưu thành công!";
+        return "Bài đăng đã được lưu thành công!!";
     }
 }
