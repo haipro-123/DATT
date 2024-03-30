@@ -1,6 +1,5 @@
 package com.poly.datt.service.impl;
 
-import com.poly.datt.dto.PostDTO;
 import com.poly.datt.entity.Post;
 import com.poly.datt.repository.PostRepository;
 import com.poly.datt.service.PostService;
