@@ -6,12 +6,16 @@ import com.poly.datt.entity.User;
 import com.poly.datt.repository.UserRepository;
 import com.poly.datt.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public User loginUser(UserDTO userDTO) {
@@ -34,5 +38,10 @@ public class UserServiceImpl implements UserService {
                 .email(userRequest.getEmail())
                 .build();
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getOne(UUID idUser) {
+        return userRepository.findById(idUser).get();
     }
 }

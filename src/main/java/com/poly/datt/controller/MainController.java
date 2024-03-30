@@ -35,5 +35,4 @@ public class MainController {
         }
         return "/pages/home";
     }
-
 }

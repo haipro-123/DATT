@@ -1,14 +1,20 @@
 package com.poly.datt.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Data
-public class UserDTO {
-    private String email;
-    private String password;
-}
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @Data
+    public class UserDTO {
+        private String email;
+        private String password;
+    }
