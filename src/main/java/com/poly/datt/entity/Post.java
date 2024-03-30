@@ -21,6 +21,9 @@ public class Post implements Serializable {
     @Column(name = "id")
     private UUID id;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "content")
     private String content;
 

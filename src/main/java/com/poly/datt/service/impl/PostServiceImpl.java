@@ -1,5 +1,6 @@
 package com.poly.datt.service.impl;
 
+import com.poly.datt.dto.PostDTO;
 import com.poly.datt.entity.Post;
 import com.poly.datt.repository.PostRepository;
 import com.poly.datt.service.PostService;
@@ -34,5 +35,10 @@ public class PostServiceImpl implements PostService {
         Page<Post> listPage
                 = new PageImpl<Post>(list, PageRequest.of(currentPage, pageSize), listAll.size());
         return listPage;
+    }
+
+    @Override
+    public Post savePost(Post post) {
+        return postRepository.save(post);
     }
 }
