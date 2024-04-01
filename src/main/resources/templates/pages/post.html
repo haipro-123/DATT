@@ -6,23 +6,100 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
-<h1>Create a New Post</h1>
-<div th:if="${successMessage}">
-    <p th:text="${successMessage}"></p>
-</div>
+<style>
+    /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<form id="postForm" method="get">
-    <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" />
+/* Style the form container */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style the form labels */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Style the form inputs */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; /* Disable textarea resizing */
+}
+
+/* Style the submit button */
+#sendPost {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Change submit button color on hover */
+#sendPost:hover {
+    background-color: #45a049;
+}
+
+/* Style success message */
+.success-message {
+    color: green;
+    margin-top: 10px;
+}
+
+/* Style error message */
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+/* Căn giữa ngang */
+.center {
+    text-align: center;
+}
+
+/* Thêm padding cho button để tạo khoảng cách giữa button và form */
+#sendPost {
+    margin-top: 10px; /* Khoảng cách từ button đến form */
+}
+.top-space {
+    margin-top: 20px; /* Điều chỉnh khoảng cách tùy ý */
+}
+</style>
+<body>
+<div class="center">
+    <h1 class="top-space">Create a New Post</h1>
+    <div th:if="${successMessage}">
+        <p th:text="${successMessage}"></p>
     </div>
-    <div>
-        <label for="content">Content:</label><br>
-        <textarea id="content" name="content" rows="4" cols="50"></textarea>
-    </div>
-</form>
-<button id="sendPost" type="button">Post</button>
+
+    <form id="postForm" method="get">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" />
+        </div>
+        <div>
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content" rows="4" cols="50"></textarea>
+        </div>
+    </form>
+    <button id="sendPost" type="button">Post</button>
+</div>
 <script type="text/javascript" >
     $("#sendPost").on("click",function (e){
         console.log("hello");
