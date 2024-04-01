@@ -1,16 +1,17 @@
 package com.poly.datt.dto;
 
-import com.poly.datt.entity.User;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Builder
 public class PostDTO {
     private String title;
     private String content;
-    private User user;
+    private String idUser;
 }

@@ -1,6 +1,5 @@
 package com.poly.datt.controller;
 
-import com.poly.datt.dto.PostDTO;
 import com.poly.datt.entity.Post;
 import com.poly.datt.entity.User;
 import com.poly.datt.service.PostService;
@@ -15,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.UUID;
@@ -49,11 +47,5 @@ public class PostController {
         postService.savePost(post);
         redirectAttributes.addFlashAttribute("successMessage", "Bài đăng đã được lưu thành công!");
         return "redirect:/home";
-    }
-
-    @PostMapping("/save")
-    public String savePost(@RequestBody Post post) {
-        postService.savePost(post);
-        return "Bài đăng đã được lưu thành công!!";
     }
 }

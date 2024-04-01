@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -39,5 +40,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post savePost(Post post) {
         return postRepository.save(post);
+    }
+
+    @Override
+    public Post getOne(UUID idPost) {
+        return postRepository.findById(idPost).get();
     }
 }
